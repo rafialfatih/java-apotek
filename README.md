@@ -1,2 +1,3 @@
 # java-apotek
-Aplikasi apotek dengan java &amp; mysql
+Aplikasi GUI apotek dengan java &amp; mysql.
+Menggunakan JFrame NetBeans.
