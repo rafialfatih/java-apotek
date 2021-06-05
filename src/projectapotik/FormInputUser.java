@@ -118,28 +118,44 @@ public class FormInputUser extends javax.swing.JFrame {
     private void jOkSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jOkSimpanActionPerformed
         // TODO add your handling code here:
         
-        try {
-            String idUser, namaUser, passUser, jabatanUser;
-            idUser = jTxtIDUser.getText();
-            namaUser = jTxtNamaUser.getText();
-            passUser = main.encryptPassMD5(jTxtPassword.getText());
-            jabatanUser = jCmbJabatan.getSelectedItem().toString();
+        if (!jTxtIDUser.getText().isEmpty()) {
+            if (!jTxtNamaUser.getText().isEmpty()) {
+                if (!jTxtPassword.getText().isEmpty()) {
+                    if (jCmbJabatan.getSelectedIndex() != 0) {
+                        try {
+                            String idUser, namaUser, passUser, jabatanUser;
+                            idUser = jTxtIDUser.getText();
+                            namaUser = jTxtNamaUser.getText();
+                            passUser = main.encryptPassMD5(jTxtPassword.getText());
+                            jabatanUser = jCmbJabatan.getSelectedItem().toString();
 
-            String sql = "INSERT INTO tblogin VALUES('" + idUser + "',"
-                                                  + "'" + namaUser + "',"
-                                                  + "'" + passUser + "',"
-                                                  + "'" + jabatanUser + "')";
-            
-            stm = conn.createStatement();
-            stm.executeUpdate(sql);
-            stm.close();
-            
-            JOptionPane.showMessageDialog(null, "Data user berhasil ditambahkan!");
-            
-            ClearData();
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+                            String sql = "INSERT INTO tblogin VALUES('" + idUser + "',"
+                                                                  + "'" + namaUser + "',"
+                                                                  + "'" + passUser + "',"
+                                                                  + "'" + jabatanUser + "')";
+
+                            stm = conn.createStatement();
+                            stm.executeUpdate(sql);
+                            stm.close();
+
+                            JOptionPane.showMessageDialog(null, "Data user berhasil ditambahkan!");
+
+                            ClearData();
+
+                        } catch (Exception e) {
+                            JOptionPane.showMessageDialog(null, e.getMessage());
+                        }
+                    }else {
+                        JOptionPane.showMessageDialog(null, "Anda belum memilih jabatan!");
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "Anda belum mengisi Password!");
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Anda belum mengisi Nama User!");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Anda belum mengisi ID User!");
         }
         
     }//GEN-LAST:event_jOkSimpanActionPerformed
