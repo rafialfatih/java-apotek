@@ -29,12 +29,13 @@ public class FormLoginUser extends javax.swing.JFrame {
         try {
             
             String user = jTxtIDUser.getText();
-            String pass = main.encryptPassMD5(jTxtPassword.getText());
+            String password = String.valueOf(jTxtPassword.getPassword());
+            String pass = main.encryptPassMD5(password);
                 
             if(user.isEmpty()){
                 JOptionPane.showMessageDialog(null, "Gagal login! \nID belum terisi!");
                 
-            }else if(jTxtPassword.getText().isEmpty()){
+            }else if(password.isEmpty()){
                 JOptionPane.showMessageDialog(null, "Gagal login! \nPassword belum terisi!");
                 
             }else{
@@ -89,12 +90,12 @@ public class FormLoginUser extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        jTxtPassword = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTxtIDUser = new javax.swing.JTextField();
         jOkLogin = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        jTxtIDUser = new javax.swing.JTextField();
+        jTxtPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login User");
@@ -104,20 +105,9 @@ public class FormLoginUser extends javax.swing.JFrame {
         jLabel2.setText("ID User");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, -1));
 
-        jTxtPassword.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jTxtPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTxtPasswordActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTxtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 160, 30));
-
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel3.setText("Password");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, -1, -1));
-
-        jTxtIDUser.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        getContentPane().add(jTxtIDUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 160, 30));
 
         jOkLogin.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jOkLogin.setText("Login");
@@ -143,6 +133,16 @@ public class FormLoginUser extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 70));
 
+        jTxtIDUser.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        getContentPane().add(jTxtIDUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 160, 30));
+
+        jTxtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTxtPasswordActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTxtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 160, 30));
+
         setSize(new java.awt.Dimension(504, 455));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -152,15 +152,15 @@ public class FormLoginUser extends javax.swing.JFrame {
         Login();
     }//GEN-LAST:event_jOkLoginActionPerformed
 
-    private void jTxtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtPasswordActionPerformed
-        // TODO add your handling code here:
-        Login();
-    }//GEN-LAST:event_jTxtPasswordActionPerformed
-
     private void jOkLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jOkLoginKeyPressed
         // TODO add your handling code here:
         Login();
     }//GEN-LAST:event_jOkLoginKeyPressed
+
+    private void jTxtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtPasswordActionPerformed
+        // TODO add your handling code here:
+        Login();
+    }//GEN-LAST:event_jTxtPasswordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,6 +204,6 @@ public class FormLoginUser extends javax.swing.JFrame {
     private javax.swing.JButton jOkLogin;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTxtIDUser;
-    private javax.swing.JTextField jTxtPassword;
+    private javax.swing.JPasswordField jTxtPassword;
     // End of variables declaration//GEN-END:variables
 }
